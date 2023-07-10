@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>The last 3000</title>
+    <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+</style>
+</head>
+<body>
+    
+    <div class="title">You can protect tiger simply by switching off the lights</div>
+
+  <script>// declare a function to show the tiger image
+    function showTiger() {
+      
+     // get the img element by its parent class name
+     var img = document.getElementsByClassName("tiger")[0].getElementsByTagName("img")[0];
+     
+     // change the image opacity to one (fully visible)
+     img.style.opacity = "1";
+    }
+    
+    // call the function when the page loads
+
+
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("slide");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+
+<style>
+  /* 메뉴탭의 스타일을 정의합니다 */
+  .menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 8%;
+    justify-content: center; /* 메뉴탭을 가로로 중앙에 배치합니다 */
+    text-align: center;
+    padding-top: 15px;
+    gap: 10px; /* 메뉴탭끼리 띄웁니다 */
+    height: 350px; /* 메뉴탭의 높이를 350px로 설정합니다 */
+    width: 100%; /* 메뉴탭의 너비를 100%로 설정합니다 */
+  }
+
+
+  /* 메뉴탭의 각 항목에 스타일을 적용합니다 */
+  .menu li {
+    padding: 10px;
+    background-color: #023859; /* 메뉴탭의 색상을 바꿉니다 */
+    cursor: pointer;
+    width: 100px; /* 메뉴탭의 항목의 너비를 100px로 설정합니다 */
+    border-radius: 15px; /* 메뉴탭의 항목의 모서리를 둥글게 만듭니다 */
+  }
+
+  /* 메뉴탭의 항목에 마우스를 호버하면 색상이 변하게 합니다 */
+  .menu li:hover {
+    background-color: #001f33;
+    color: white;
+  }
+
+  /* 메뉴탭의 항목에 마우스를 호버하면 나타나는 박스의 스타일을 정의합니다 */
+  .box {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 220px;
+    height: 300px;
+    padding: 10px;
+    color: white;
+    margin: 5%;
+    border: 3px solid white; 
+    background-color: #023859; 
+    border-radius: 15px;
+    display: none; 
+    opacity: 0; 
+    transition: opacity 1s; 
+    display: flex;
+    list-style: none;
+  }
+
+  /* 박스가 보일 때 투명도를 1로 바꿉니다 */
+  .box.show {
+    display: block;
+    opacity: 1;
+  }
+</style>
+
+<ul class="menu">
+  <li data-text="Tigers need large areas of forest or grassland with cover, water resources and enough prey to survive. The loss of habitat due to rapid economic development is one of the major threats to tigers" style="color: white;">Turning off the lights can help protect the tiger habitat and the tiger population.</li>
+  <li data-text="They are the top predators in their food chain, which means they regulate the population and behavior of their prey and other animals. " style="color: white;">Why are tigers important for the ecosystem?</li>
+  <li data-text="Establishing and expanding protected areas that cover the core and corridor habitats of tigers, where human activities are restricted or regulated" style="color: white;">How to protect the tiger habitat?</li>
+</ul>
+<div style="padding-left: 40%; padding-right: 40%; padding-top: 10px; padding-bottom: 5%;">
+  <div style="padding: 10px; text-align: center; color: white; font-size: 15px; background-color: #001f33; border-radius: 30px;">hover the box</div>
+</div>
+
+<div class="box"></div>
+
+<script>
+  // 메뉴탭의 항목들을 선택합니다
+  const menuItems = document.querySelectorAll(".menu li");
+
+  // 박스를 선택합니다
+  const box = document.querySelector(".box");
+
+  // 각 항목에 이벤트 리스너를 추가합니다
+  menuItems.forEach((item) => {
+    // 마우스가 들어갔을 때
+    item.addEventListener("mouseenter", (e) => { // 이벤트 객체 e를 받습니다
+      // 박스에 show 클래스를 추가합니다
+      box.classList.add("show");
+
+      // 박스에 해당 항목의 data-text 속성 값을 넣습니다
+      box.textContent = item.dataset.text;
+
+      // 마우스와 박스의 위치를 비교합니다
+      const mouseRect = e.target.getBoundingClientRect(); // 마우스가 호버한 타겟의 위치 정보를 가져옵니다
+      const boxRect = box.getBoundingClientRect(); // 박스의 위치 정보를 가져옵니다
+
+      // 만약 마우스와 박스가 겹친다면 (마우스가 박스보다 왼쪽에 있고, 마우스와 박스의 오른쪽 끝이 겹친다면)
+      if (mouseRect.left < boxRect.left && mouseRect.right > boxRect.left) {
+        // 박스를 오른쪽으로 이동시킵니다 (마우스와 박스의 오른쪽 끝의 차이만큼)
+        box.style.left = `${boxRect.left + mouseRect.right - boxRect.left}px`;
+      }
+    });
+
+    // 마우스가 나갔을 때
+    item.addEventListener("mouseleave", () => {
+      // 박스에서 show 클래스를 제거합니다
+      box.classList.remove("show");
+
+      // 박스의 위치를 원래대로 되돌립니다
+      box.style.left = "0";
+    });
+  });
+</script>
+
+
+
+
+
+ <script src="slider.js"></script>  
+
+    <a><h1>Do you know that?</h1></a>
+    <div class="block"></div>
+    <a><h1>According to a recent study from WWF</h1></a>
+    <div class="block"><!-- 이미지를 div 요소로 감쌉니다 -->
+      <div class="container">
+        <img src="tiger.4.PNG">
+      </div>
+      
+      <style>
+        /* container 클래스의 스타일을 정의합니다 */
+        .container {
+          display: flex; /* flexbox를 사용합니다 */
+          justify-content: center; /* 이미지를 가로로 중앙에 배치합니다 */
+          align-items: center; /* 이미지를 세로로 중앙에 배치합니다 */
+          object-fit: cover; /* 이미지 비율을 유지하면서 영역을 채우도록 설정합니다 */
+        }
+       
+      </style></div>
+
+    <a><h1>The tiger population was estimated at about 100,000 at the beginning of the 20th century</h1></a>
+    <div class="block"><!-- 이미지를 div 요소로 감쌉니다 -->
+      <div class="container">
+        <img src="tiger.5.PNG">
+      </div>
+      
+      <style>
+        /* container 클래스의 스타일을 정의합니다 */
+        .container {
+          display: flex; /* flexbox를 사용합니다 */
+          justify-content: center; /* 이미지를 가로로 중앙에 배치합니다 */
+          align-items: center; /* 이미지를 세로로 중앙에 배치합니다 */
+          object-fit: cover; /* 이미지 비율을 유지하면서 영역을 채우도록 설정합니다 */
+        }
+       
+      </style></div>
+
+    <a><h1>but it declined rapidly over the past 100 years, dropping the number of wild tigers to 3,200 in 2010.</h1></a>
+    <div class="block"><!-- 이미지를 div 요소로 감쌉니다 -->
+      <div class="container">
+        <img src="tiger.3.PNG">
+      </div>
+      
+      <style>
+        /* container 클래스의 스타일을 정의합니다 */
+        .container {
+          display: flex; /* flexbox를 사용합니다 */
+          justify-content: center; /* 이미지를 가로로 중앙에 배치합니다 */
+          align-items: center; /* 이미지를 세로로 중앙에 배치합니다 */
+          object-fit: cover; /* 이미지 비율을 유지하면서 영역을 채우도록 설정합니다 */
+        }
+       
+      </style></div>
+
+    <a><h1>The reason to prevent this decline is that Tigers are the top predators in their food chain, which means they regulate the population and behavior of their prey and other animals.</h1></a>
+    <div class="block"><!-- 이미지를 div 요소로 감쌉니다 -->
+      <div class="container">
+        <img src="tiger_h.PNG">
+      </div>
+      
+      <style>
+        /* container 클래스의 스타일을 정의합니다 */
+        .container {
+          display: flex; /* flexbox를 사용합니다 */
+          justify-content: center; /* 이미지를 가로로 중앙에 배치합니다 */
+          align-items: center; /* 이미지를 세로로 중앙에 배치합니다 */
+          object-fit: cover; /* 이미지 비율을 유지하면서 영역을 채우도록 설정합니다 */
+        }
+       
+      </style></div>
+
+    <a><h1>Starting today, let's start with a small practice like turning off the lights!</h1></a>
+    <div class="block"></div>
+
+    <a><h1>Turn off the light and save the tiger!</h1></a>
+    
+    
+
+    
+    
+    
+        <script>
+    
+            let observer = new IntersectionObserver((e)=>{
+                e.forEach((박스)=>{
+                    if(박스.isIntersecting){
+                    박스.target.style.opacity = 1;
+                    }
+                })
+            })
+            let a = document.querySelectorAll('a')
+            observer.observe(a[0])
+            observer.observe(a[2])
+            observer.observe(a[3])
+            observer.observe(a[4])
+            observer.observe(a[5])
+            observer.observe(a[6])
+            observer.observe(a[7])
+    
+        </script>
+    <div class="img_tiger">
+        <img src="IMG_9789.png">
+    </div>
+    <div class="container" style="position: relative; text-align: center;">
+        <div class="bt" id="my-button">Turn off the light</div>
+      </div>
+      <div class="block"></div>
+
+        <script>
+            var button = document.getElementById("my-button");
+            var body = document.body;
+            button.addEventListener("click", function() {
+            if (body.style.backgroundColor == "black") {
+                body.style.backgroundColor = "rgb(242, 196, 56)";
+            } else {
+                body.style.backgroundColor = "black";
+            }
+            });
+        </script>
+        
+        <button class="scroll-top" onclick="scrollToTop()">⬆️</button>
+        <script>
+            function scrollToTop() {
+            window.scrollTo(0, 0); /* scroll to the coordinates (0, 0) */
+            }
+        </script>
+
+        <div class="footer">
+          <div style="padding: 10px; right: 10%; color: white;">SOURCE</div>
+          <div style="padding: 10px; right: 10%; color: white;">https://images.app.goo.gl/FG5gdUJ8PVAW7ebq5</div>
+          <div style="padding: 10px; right: 10%; color: white;">https://images.app.goo.gl/DTDGbUW6Q7vg1HDk9</div>
+          <div style="padding: 10px; right: 10%; color: white;">https://images.app.goo.gl/UrYmg5RyLmz7SLSs5</div>
+          <div style="padding: 10px; right: 10%; color: white;">https://u.osu.edu/stueber.2/2014/04/07/deforestation-and-the-loss-of-our-tigers/</div>
+          <div style="padding: 10px; right: 10%; color: white;">
+        <div style="text-align: center; padding-top: 50px;">Producted by Im Donghyeon[content], Lee Binhui[website]</div>
+
+        <style>
+          /* footer 클래스의 스타일을 정의합니다 */
+          .footer {
+            height: 400px; /* 높이를 600px로 설정합니다 */
+            background-color: #023859; /* 배경 색상을 파란색으로 설정합니다 */
+          }
+        </style>
+</body>
+</html>

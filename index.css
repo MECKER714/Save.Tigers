@@ -1,0 +1,75 @@
+.wrap{ text-align: center; position: relative; overflow-x: hidden; } .title{ text-align: center; padding-top: 2%; padding-bottom: 2%; background-color: #023859; margin: 0; }
+
+
+    body{
+        background-color: rgb(242, 196, 56);
+        transition: background-color 1s;
+        margin: 0;
+        font-family: 'Noto Sans KR', sans-serif;
+        overflow-x: hidden;
+    }
+    
+    a{
+        position: relative;
+        text-align: center;
+        color: white;
+        opacity: 0;
+        transition: all 2.5s;
+        pointer-events: none; /* added this line */
+
+    }
+    .title{
+        color: white;
+        width: 100%;
+        font-size: 35px;
+        font: bold;
+    }
+
+    .container {
+        width: 100%; /* full width */
+        display: flex; /* use flexbox layout */
+        justify-content: center; /* center the button horizontally */
+      }
+    .img_tiger{
+      text-align: center;
+    }
+    .block{
+      padding: 15%;
+    }
+      
+      /* style the button */
+      .bt {
+        background-color: #023859; /* dark blue */
+        text-decoration: none; /* remove underline */
+        color: white; /* white text */
+        font-size: 20px; /* font size */
+        text-align: center; /* center text */
+        padding: 10px 20px; /* add some space around the text */
+        border: none; /* remove border */
+        border-radius: 5px; /* round the corners */
+        cursor: pointer; /* change cursor to a hand when hovering */
+        width: 25%; /* make the button take up 25% of the parent width */
+      }
+      
+      .bt:hover {
+        background-color: #046c9a; /* lighter blue when hovering */
+      }
+
+
+      .scroll-top {
+        position: fixed; /* make the button stay in the same place */
+        bottom: 20px; /* position the button 20px from the bottom */
+        right: 20px; /* position the button 20px from the right */
+        background-color: #023859; /* dark blue */
+        color: white; /* white text */
+        font-size: 20px; /* font size */
+        padding: 10px; /* add some space around the text */
+        border: none; /* remove border */
+        border-radius: 50%; /* make the button circular */
+        cursor: pointer; /* change cursor to a hand when hovering */
+      }
+      
+      .scroll-top:hover {
+        background-color: #046c9a; /* lighter blue when hovering */
+      }
+      
