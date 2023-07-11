@@ -1,6 +1,8 @@
 .wrap{ text-align: center; position: relative; overflow-x: hidden; } .title{ text-align: center; padding-top: 2%; padding-bottom: 2%; background-color: #023859; margin: 0; }
 
-
+html{
+    overflow-x: hidden;
+    }
     body{
         background-color: rgb(242, 196, 56);
         transition: background-color 1s;
